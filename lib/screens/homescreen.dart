@@ -323,36 +323,39 @@ class _HomescreenState extends State<Homescreen> {
                     itemCount: notifications.length,
                     itemBuilder: (context, index) {
                       final item = notifications[index];
-                      return Card(
-                        child: ListTile(
-                          trailing: IconButton(
-                            icon: Icon(Icons.delete),
-                            onPressed: () {
-                              notifications.removeAt(
-                                index,
-                              ); 
-                              // saveNotifications();
-                              saveScheduledNotifications();
-                            },
-                          ),
-                          title: Text(
-                            item["title"],
-                            style: TextStyle(fontSize: 20),
-                          ),
-                          subtitle: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                item["description"],
-                                style: TextStyle(fontSize: 15),
-                              ),
-                              Text(
-                                DateFormat(
-                                  'hh:mm a',
-                                ).format(DateTime.parse(item["time"])),
-                                style: TextStyle(fontSize: 12),
-                              ),
-                            ],
+                      return Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 2),
+                        child: Card(
+                          child: ListTile(
+                            trailing: IconButton(
+                              icon: Icon(Icons.delete),
+                              onPressed: () {
+                                notifications.removeAt(
+                                  index,
+                                ); 
+                                // saveNotifications();
+                                saveScheduledNotifications();
+                              },
+                            ),
+                            title: Text(
+                              item["title"],
+                              style: TextStyle(fontSize: 20),
+                            ),
+                            subtitle: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  item["description"],
+                                  style: TextStyle(fontSize: 15),
+                                ),
+                                Text(
+                                  DateFormat(
+                                    'hh:mm a',
+                                  ).format(DateTime.parse(item["time"])),
+                                  style: TextStyle(fontSize: 12),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       );
